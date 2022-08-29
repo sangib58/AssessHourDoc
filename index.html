@@ -7,13 +7,13 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Assess Hour - Solution for online assessment (SaaS)</title>
+	<title>Assess Hour - A Solution for online assessment (SaaS)</title>
 
 	<meta name="description" content="">
 	<meta name="author" content="Sangib Kumar Saha">
 	<meta name="copyright" content="Sangib Kumar Saha">
 	<meta name="generator" content="Documenter v2.0 https://evp.to/documenter">
-	<meta name="date" content="2022-08-24T00:00:00+02:00">
+	<meta name="date" content="2022-08-29T00:00:00+02:00">
 
 	<link rel="stylesheet" href="assets/css/documenter_style.css" media="all">
 	<link rel="stylesheet" href="assets/js/google-code-prettify/prettify.css" media="screen">
@@ -76,6 +76,7 @@
 				
 			<li><a href="#overview" title="Overview">Overview</a></li>
 			<li><a href="#project_requirement" title="Project Requirement">Project Requirement</a></li>
+			<li><a href="#quick_start_guide" title="Quick Start Guide">Quick Start Guide</a></li>
 			<li><a href="#set_up_assesshourapi" title="Set up AssessHourApi">Set up AssessHourApi</a></li>
 			<li><a href="#set_up_assesshourclient" title="Set up AssessHourClient">Set up AssessHourClient</a></li>
 			<li><a href="#run_on_local_machine" title="Run on Local Machine">Run on Local Machine</a></li>
@@ -93,14 +94,14 @@
 	<div id="documenter_content">
 	<section id="documenter_cover">
 	<h1>Assess Hour</h1>
-	<h2>Solution for online assessment (SaaS)</h2>
+	<h2>A Solution for online assessment (SaaS)</h2>
 	<div id="documenter_buttons">
 		
 	</div>
 	<hr>
 	<ul>
 	<li>created: 08/21/2022</li>
-	<li>latest update: 08/24/2022</li>
+	<li>latest update: 08/29/2022</li>
 	<li>by: Sangib Kumar Saha</li>
 	
 	<li>email: <a href="mailto:&#115;&#97;&#110;&#103;&#105;&#98;&#114;&#117;&#115;&#101;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#115;&#97;&#110;&#103;&#105;&#98;&#114;&#117;&#115;&#101;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></li>
@@ -138,6 +139,37 @@
 	</li>
 </ul>
 </section>
+<section id="quick_start_guide">
+	<div class="page-header"><h3>Quick Start Guide</h3><hr class="notop"></div>
+<p>
+	AssessHour project has two separate project i.e. AssessHourClient and AssessHourApi.</p>
+<ul>
+	<li>
+		Open AssessHourApi project on Visual studio code. Then open appsettings.json file and replace the Connection String by your one.</li>
+	<li>
+		Now open terminal on VS Code and write below commands</li>
+</ul>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -&gt; dotnet ef migrations add initial<br>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -&gt; dotnet ef database update<br>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -&gt; dotnet run<br>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; You should see your API listening at localhost:5003.</p>
+<ul>
+	<li>
+		Now open AssessHourClient on VS Code. Open terminal and write</li>
+</ul>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -&gt; npm install<br>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -&gt; npm run serve</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Your project will be running at localhost:8080.&nbsp;</p>
+<p>
+	&nbsp;</p>
+<p>
+	<strong>N.B: This is just a quick start note, you need to follow full documentation for full project set up which starts from below.</strong></p>
+<p>
+	&nbsp;</p>
+</section>
 <section id="set_up_assesshourapi">
 	<div class="page-header"><h3>Set up AssessHourApi</h3><hr class="notop"></div>
 <ul>
@@ -150,18 +182,18 @@
 	<pre class="prettyprint lang-js linenums">
 &quot;ConnectionStrings&quot;: {
 
-    &quot;ApiConnStringMssql&quot;: &quot;data source=Sangib-PC;initial catalog=QuizPlusDB;
+    &quot;ApiConnStringMssql&quot;: &quot;data source=Sangib-PC;initial catalog=assesshourdb;
      persist security info=True;Integrated Security=SSPI;&quot;,
 
-    &quot;ApiConnStringMysql&quot;: &quot;server=localhost;port=3306;database=QuizPlusDB;user=root;&quot;,
+    &quot;ApiConnStringMysql&quot;: &quot;server=localhost;port=3306;database=assesshourdb;user=root;&quot;,
 
     &quot;ApiConnStringOracle&quot;: &quot;Data Source=(DESCRIPTION=(ADDRESS_LIST=
     (ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))  
     (CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=orclpdb)));User Id=root;Password=root;&quot;,
 
-    &quot;ApiConnStringSqlite&quot;: &quot;Data Source=QuizPlusDB.db;&quot;,
+    &quot;ApiConnStringSqlite&quot;: &quot;Data Source=assesshourdb.db;&quot;,
 
-    &quot;ApiConnStringPostgreSql&quot;: &quot;Server=127.0.0.1;Port=5432;Database=QuizPlusDB;
+    &quot;ApiConnStringPostgreSql&quot;: &quot;Server=127.0.0.1;Port=5432;Database=assesshourdb;
     User Id=postgres;Password=postgres;&quot;
 
   }</pre>
@@ -331,7 +363,7 @@ export default{
 <p>
 	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -&gt;npm run build</p>
 <p>
-	&nbsp;you will get a dist(/assesshourclient/dist) directory. Now find a web.config (/assesshourclient/web.config) file on root directory of client project, Copy that file and paste it to inside dist directory. Every is ready.</p>
+	&nbsp;you will get a dist(/assesshourclient/dist) directory. Now find a web.config (/assesshourclient/web.config) file on root directory of client project, Copy that file and paste it to inside dist directory. Everything is ready.</p>
 <p>
 	Now you need to copy this dist&nbsp;directory to a physical path on server and open another site with Host name as assesshour.com. That&#39;s all for windows server.</p>
 <p>
@@ -426,7 +458,13 @@ server {
 <div>
 	&nbsp;</div>
 <div>
-	&nbsp;</div>
+	<ul>
+		<li>
+			<p>
+				Now, Open Client project on VS Code and set that &#39;https://api.assesshour.com&#39; on hostname to config.js file.</p>
+		</li>
+	</ul>
+</div>
 <pre class="prettyprint lang-js linenums" style="background-image: url(&quot;../../_img/pre_bg.png&quot;);">
 export default{
     hostname:&#39;https://api.assesshour.com&#39;
@@ -466,12 +504,6 @@ server {
 	&nbsp;</div>
 <div>
 	&nbsp;</div>
-<ul>
-	<li>
-		<p>
-			Now, Open Client project on VS Code and set that &#39;https://api.assesshour.com&#39; on hostname to config.js file.</p>
-	</li>
-</ul>
 <div>
 	Now let&#39;s end by executing below commands on linux terminal</div>
 <div>
