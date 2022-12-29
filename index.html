@@ -13,7 +13,7 @@
 	<meta name="author" content="Sangib Kumar Saha">
 	<meta name="copyright" content="Sangib Kumar Saha">
 	<meta name="generator" content="Documenter v2.0 https://evp.to/documenter">
-	<meta name="date" content="2022-09-14T00:00:00+02:00">
+	<meta name="date" content="2022-12-29T00:00:00+01:00">
 
 	<link rel="stylesheet" href="assets/css/documenter_style.css" media="all">
 	<link rel="stylesheet" href="assets/js/google-code-prettify/prettify.css" media="screen">
@@ -75,15 +75,11 @@
 			<li><a class="current" href="#documenter_cover">Start</a></li>
 				
 			<li><a href="#overview" title="Overview">Overview</a></li>
-			<li><a href="#project_requirement" title="Project Requirement">Project Requirement</a></li>
-			<li><a href="#quick_start_guide" title="Quick Start Guide">Quick Start Guide</a></li>
-			<li><a href="#set_up_assesshourapi" title="Set up AssessHourApi">Set up AssessHourApi</a></li>
-			<li><a href="#set_up_assesshourclient" title="Set up AssessHourClient">Set up AssessHourClient</a></li>
-			<li><a href="#run_on_local_machine" title="Run on Local Machine">Run on Local Machine</a></li>
 			<li><a href="#server_requirements" title="Server Requirements">Server Requirements</a></li>
 			<li><a href="#publish_to_server" title="Publish to Server">Publish to Server</a></li>
 			<li><a href="#credentials" title="Credentials">Credentials</a></li>
 			<li><a href="#payment_testing" title="Payment Testing">Payment Testing</a></li>
+			<li><a href="#database_options" title="Database Options">Database Options</a></li>
 			<li><a href="#features_super_admin" title="Features(Super Admin) ">Features(Super Admin) </a></li>
 			<li><a href="#features_admin" title="Features(Admin)">Features(Admin)</a></li>
 			<li><a href="#features_candidates" title="Features(Candidates)">Features(Candidates)</a></li>
@@ -104,7 +100,7 @@
 	<hr>
 	<ul>
 	<li>created: 08/21/2022</li>
-	<li>latest update: 09/14/2022</li>
+	<li>latest update: 12/29/2022</li>
 	<li>by: Sangib Kumar Saha</li>
 	
 	<li>email: <a href="mailto:&#115;&#97;&#110;&#103;&#105;&#98;&#114;&#117;&#115;&#101;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#115;&#97;&#110;&#103;&#105;&#98;&#114;&#117;&#115;&#101;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></li>
@@ -121,173 +117,10 @@
 <p>
 	&nbsp;</p>
 </section>
-<section id="project_requirement">
-	<div class="page-header"><h3>Project Requirement</h3><hr class="notop"></div>
-<ul>
-	<li>
-		<p>
-			Visual Studio Code.</p>
-	</li>
-	<li>
-		Node.js (Browse here to download&nbsp;<strong>https://nodejs.org/en/</strong>)</li>
-</ul>
-<ul>
-	<li>
-		.NET 6 SDK (Browse here to download&nbsp;&nbsp;<strong>https://dotnet.microsoft.com/download</strong>)</li>
-</ul>
-<ul>
-	<li>
-		<p>
-			Database provider software (SQL Server / MySql / Sqlite / PostgreSql / Oracle).</p>
-	</li>
-</ul>
-</section>
-<section id="quick_start_guide">
-	<div class="page-header"><h3>Quick Start Guide</h3><hr class="notop"></div>
-<p>
-	AssessHour project has two separate project i.e. AssessHourClient and AssessHourApi.</p>
-<ul>
-	<li>
-		Open AssessHourApi project on Visual studio code. Then open appsettings.json file and replace the Connection String by your one.</li>
-	<li>
-		Now open terminal on VS Code and write below commands</li>
-</ul>
-<p>
-	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -&gt; dotnet ef migrations add initial<br>
-	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -&gt; dotnet ef database update<br>
-	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -&gt; dotnet run<br>
-	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; You should see your API listening at localhost:5003.</p>
-<ul>
-	<li>
-		Now open AssessHourClient on VS Code. Open terminal and write</li>
-</ul>
-<p>
-	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -&gt; npm install<br>
-	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -&gt; npm run serve</p>
-<p>
-	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Your project will be running at localhost:8080.&nbsp;</p>
-<p>
-	&nbsp;</p>
-<p>
-	<strong>N.B: This is just a quick start note, you need to follow full documentation for full project set up which starts from below.</strong></p>
-<p>
-	&nbsp;</p>
-</section>
-<section id="set_up_assesshourapi">
-	<div class="page-header"><h3>Set up AssessHourApi</h3><hr class="notop"></div>
-<ul>
-	<li>
-		<p>
-			Open AssessHourApi project on Visual studio code.On <strong>appsettings.json</strong> file you will find five connection strings for five different database connectivity. Replace the connection string by your one.</p>
-	</li>
-</ul>
-<div>
-	<pre class="prettyprint lang-js linenums">
-&quot;ConnectionStrings&quot;: {
-
-    &quot;ApiConnStringMssql&quot;: &quot;data source=Sangib-PC;initial catalog=assesshourdb;
-     persist security info=True;Integrated Security=SSPI;&quot;,
-
-    &quot;ApiConnStringMysql&quot;: &quot;server=localhost;port=3306;database=assesshourdb;user=root;&quot;,
-
-    &quot;ApiConnStringOracle&quot;: &quot;Data Source=(DESCRIPTION=(ADDRESS_LIST=
-    (ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))  
-    (CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=orclpdb)));User Id=root;Password=root;&quot;,
-
-    &quot;ApiConnStringSqlite&quot;: &quot;Data Source=assesshourdb.db;&quot;,
-
-    &quot;ApiConnStringPostgreSql&quot;: &quot;Server=127.0.0.1;Port=5432;Database=assesshourdb;
-    User Id=postgres;Password=postgres;&quot;
-
-  }</pre>
-</div>
-<p>
-	&nbsp;</p>
-<ul>
-	<li>
-		<p>
-			Then open <strong>Startup.cs</strong> file, On ConfigureServices method you will see five AppDbContextPool for five Connection Strings that already have on appsettings.json file. Un-Comment your required one and keep other four as commented.Have a look to the below code.I only un-comment the Mysql portion because i used Mysql DB here.</p>
-	</li>
-</ul>
-<div>
-	<pre class="prettyprint lang-js linenums">
-public void ConfigureServices(IServiceCollection services)
-
-        {
-            //Sql Server Connection String
-            /* services.AddDbContextPool&lt;AppDbContext&gt;(opt =&gt; opt.UseSqlServer
-            (Configuration.GetConnectionString(&quot;ApiConnStringMssql&quot;))); */
-
-
-            //Mysql Connection String
-            services.AddDbContextPool&lt;AppDbContext&gt;(opt=&gt;opt.UseMySql
-            (Configuration.GetConnectionString(&quot;ApiConnStringMysql&quot;)));
-
-            //Sqlite Connection String
-            /* services.AddDbContextPool&lt;AppDbContext&gt;(opt=&gt;opt.UseSqlite
-            (Configuration.GetConnectionString(&quot;ApiConnStringSqlite&quot;))); */
-
-
-            //PostgreSql Connection String
-            /* services.AddDbContextPool&lt;AppDbContext&gt;(opt=&gt;opt.UseNpgsql
-            (Configuration.GetConnectionString(&quot;ApiConnStringPostgreSql&quot;))); */
-
-
-            //Oracle Connection String
-            /* services.AddDbContextPool&lt;AppDbContext&gt;(opt=&gt;opt.UseOracle
-            (Configuration.GetConnectionString(&quot;ApiConnStringOracle&quot;))); */ </pre>
-</div>
-<p>
-	&nbsp;</p>
-<ul>
-	<li>
-		<p>
-			Now Open terminal on VS Code and write below commands&nbsp; &nbsp; &nbsp;</p>
-	</li>
-</ul>
-<p>
-	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;-&gt;dotnet tool install --global dotnet-ef</p>
-<p>
-	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;-&gt;dotnet ef migrations add MigrationName</p>
-<p>
-	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;-&gt;dotnet ef database update</p>
-<ul>
-	<li>
-		<p>
-			After successful build a folder named Migrations should create on project structure and a database named <strong>assesshourdb </strong>should create with seed data to your MySQL server (if you use MSSQL then you should check to Sql Server and so on for other databases). Now execute &quot;<strong>dotnet run</strong>&quot;&nbsp; if&nbsp; you want to run this Api project locally and you should see that your API listening at&nbsp;<strong>http://localhost:5003/</strong>.</p>
-	</li>
-</ul>
-</section>
-<section id="set_up_assesshourclient">
-	<div class="page-header"><h3>Set up AssessHourClient</h3><hr class="notop"></div>
-<ul>
-	<li>
-		<p>
-			Open AssessHourClient on Visual Studio Code.On terminal first write <strong>&quot;npm install&quot;</strong>, it will add node modules to project then write <strong>&quot;npm run serve&quot;</strong>.</p>
-	</li>
-</ul>
-<ul>
-	<li>
-		<p>
-			After doing above settings your client project will be running at <strong>http://localhost:8080</strong></p>
-	</li>
-</ul>
-</section>
-<section id="run_on_local_machine">
-	<div class="page-header"><h3>Run on Local Machine</h3><hr class="notop"></div>
-<p>
-	Assuming that you run both api and client projects by following previous steps. Now you just need to open config.js (/assesshourclient/src/config.js) from Client project and set hostname as&nbsp;http://localhost:5003 because our api is running here and you need to link with api from client.</p>
-<pre class="prettyprint lang-js linenums">
-export default{
-&nbsp;&nbsp;&nbsp; hostname:&#39;http://localhost:5003&#39;
-}</pre>
-<p>
-	&nbsp;</p>
-</section>
 <section id="server_requirements">
 	<div class="page-header"><h3>Server Requirements</h3><hr class="notop"></div>
 <h2>
-	For Windows Server with IIS</h2>
+	For Windows Server with IIS &amp; Mysql</h2>
 <ul>
 	<li>
 		IIS 10</li>
@@ -296,12 +129,12 @@ export default{
 	<li>
 		URL Rewrite (Browse here to download&nbsp; <strong>https://www.iis.net/downloads/microsoft/url-rewrite</strong>)</li>
 	<li>
-		Sql server / Mysql / Sqlite / PostgreSql / Oracle (based on your preference)</li>
+		Mysql DB</li>
 </ul>
 <h2>
 	&nbsp;</h2>
 <h2>
-	For Linux Server with Nginx</h2>
+	For Linux Server with Nginx &amp; Mysql</h2>
 <ul>
 	<li>
 		sudo apt update</li>
@@ -331,30 +164,20 @@ export default{
 	Windows Server</h2>
 <ul>
 	<li>
+		Open Api project from Project folder.Here you will get a file named appsettings.json, open that then move to&nbsp;ConnectionStrings and change&nbsp;ApiConnStringMysql as per your Mysql DB.</li>
+	<li>
 		<p>
-			Open Api project on Visual studio code. Assuming you are going to use https://assesshour.com as Site name/Domain for Client. Now open Startup.cs file and add this Domain to the existing policy like below to avoid CORS issues.</p>
+			Assuming you are going to use https://assesshour.com as Site name for Client. Now on appsettings.json file move to&nbsp;clientUrl and you can see https://assesshour.com set as&nbsp;clientLive.</p>
+	</li>
+	<li>
+		<p>
+			Now open a new site on IIS with Site name, Physical path, IP address, Port and Host name. Copy the contents of Api project to the physical path which you created. Now assuming that you set the Host name as api.assesshour.com, copy that name and store somewhere because we need that name just a bit later.&nbsp;</p>
 	</li>
 </ul>
-<pre class="prettyprint lang-js linenums">
-  services.AddCors(options=&gt;
-   {
-     options.AddPolicy(name:AllowSpecificOrigins,builder=&gt;
-       {
-         builder.WithOrigins(&quot;http://localhost:8080&quot;,&quot;https://assesshour.com&quot;)
-         .AllowAnyHeader()
-         .AllowAnyMethod();
-       });
-   });</pre>
-<p>
-	&nbsp;now on vscode terminal write below command</p>
-<p>
-	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;-&gt; dotnet publish</p>
-<p>
-	you will get a publish(/assesshourapi/bin/Debug/net6.0/publish) directory. Copy this publish directory to a physical path on server. Now open a new site on IIS with Site name, Physical path, IP address, Port and Host name. Now assuming that you set the Host name as api.assesshour.com, copy that name and store somewhere because we need that name just a bit later.</p>
 <ul>
 	<li>
 		<p>
-			Open Client project on VS Code and set that name (api.assesshour.com) on hostname to config.js file.</p>
+			Open Client project from Project folder. Here you will find a config.js file and set that name (api.assesshour.com) on hostname to config.js file.</p>
 	</li>
 </ul>
 <pre class="prettyprint lang-js linenums">
@@ -362,47 +185,35 @@ export default{
     hostname:&#39;https://api.assesshour.com&#39;
 }</pre>
 <p>
-	&nbsp;now on vscode terminal write below command</p>
-<p>
-	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -&gt;npm run build</p>
-<p>
-	&nbsp;you will get a dist(/assesshourclient/dist) directory. Now find a web.config (/assesshourclient/web.config) file on root directory of client project, Copy that file and paste it to inside dist directory. Everything is ready.</p>
-<p>
-	Now you need to copy this dist&nbsp;directory to a physical path on server and open another site with Host name as assesshour.com. That&#39;s all for windows server.</p>
+	Now you need to copy the contents of Client project to a physical path on server and open another site with Host name as assesshour.com.&nbsp;</p>
+<ul>
+	<li>
+		Now it&#39;s time to import the database file to your Mysql database. You will find a database on DB folder.That&#39;s all for windows server.</li>
+</ul>
 <p>
 	&nbsp;</p>
 <h2>
 	Linux(Ubuntu) Server</h2>
 <ul>
 	<li>
+		Open Api project from Project folder.Here you will get a file named appsettings.json, open that then move to&nbsp;ConnectionStrings and change&nbsp;ApiConnStringMysql as per your Mysql DB.</li>
+	<li>
 		<p>
-			Open Api project on Visual studio code. Assuming you are going to use https://assesshour.com as Site name/Domain for Client. Now open Startup.cs file and add this Domain to the existing policy like below to avoid CORS issues.</p>
+			Assuming you are going to use https://assesshour.com as Site name for Client. Now on appsettings.json file move to&nbsp;clientUrl and you can see https://assesshour.com set as&nbsp;clientLive.</p>
 	</li>
+	<li>
+		&nbsp;Now you will need to create a directory named AssessHour.Api on your Linux server. Execute below command on your linux terminal to create that directory then copy the contents of Api directory to this (/var/www/AssessHour.Api) path.</li>
 </ul>
-<pre class="prettyprint lang-js linenums" style="background-image: url(&quot;../../_img/pre_bg.png&quot;);">
-  services.AddCors(options=&gt;
-   {
-     options.AddPolicy(name:AllowSpecificOrigins,builder=&gt;
-       {
-         builder.WithOrigins(&quot;http://localhost:8080&quot;,&quot;https://assesshour.com&quot;)
-         .AllowAnyHeader()
-         .AllowAnyMethod();
-       });
-   });</pre>
-<p>
-	&nbsp;now on vscode terminal write below command</p>
-<p>
-	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;-&gt; dotnet publish</p>
-<p>
-	you will get a publish(/assesshourapi/bin/Debug/net6.0/publish) directory. Now you will need to create a directory named AssessHour.Api on your Linux server. Execute below command on your linux terminal to create that directory then copy the publish directory to this (/var/www/AssessHour.Api) path.</p>
 <p>
 	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;-&gt; sudo mkdir /var/www/AssessHour.Api</p>
 <p>
-	Now it&#39;s time to configure nginx, open a config file,</p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Now it&#39;s time to configure nginx, open a config file,</p>
 <p>
-	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -&gt;&nbsp;sudo nano /etc/nginx/sites-enabled/assessHourApi</p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -&gt;&nbsp;sudo nano /etc/nginx/sites-available/assessHourApi</p>
 <p>
-	Place the below contents and save that file.</p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;-&gt;&nbsp;sudo ln -s&nbsp;/etc/nginx/sites-available/assessHourApi&nbsp; /etc/nginx/sites-enabled/assessHourApi</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Place the below contents and save that file.</p>
 <pre class="prettyprint lang-js linenums">
 server {
 
@@ -464,28 +275,24 @@ server {
 	<ul>
 		<li>
 			<p>
-				Now, Open Client project on VS Code and set that &#39;https://api.assesshour.com&#39; on hostname to config.js file.</p>
+				Now, Open Client project from Project folder and set that &#39;https://api.assesshour.com&#39; on hostname to config.js file.</p>
 		</li>
 	</ul>
 </div>
 <pre class="prettyprint lang-js linenums" style="background-image: url(&quot;../../_img/pre_bg.png&quot;);">
 export default{
     hostname:&#39;https://api.assesshour.com&#39;
-}</pre>
+}&nbsp;</pre>
 <p>
-	&nbsp;now on vscode terminal write below command</p>
-<p>
-	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -&gt;npm run build</p>
-<p>
-	&nbsp;you will get a dist(/assesshourclient/dist) directory.&nbsp;</p>
-<p>
-	Now you will need to create a directory named AssessHour.Client on your Linux server. Execute below command on your linux terminal to create that directory then copy the dist directory to this (/var/www/AssessHour.Client) path.</p>
+	Now you will need to create a directory named AssessHour.Client on your Linux server. Execute below command on your linux terminal to create that directory then copy the contents of Client directory to this (/var/www/AssessHour.Client) path.</p>
 <p>
 	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;-&gt; sudo mkdir /var/www/AssessHour.Client</p>
 <p>
 	Next, open a config file,</p>
 <p>
-	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -&gt;&nbsp;sudo nano /etc/nginx/sites-enabled/assessHourClient</p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -&gt;&nbsp;sudo nano /etc/nginx/sites-available/assessHourClient</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;-&gt;&nbsp;sudo ln -s&nbsp;/etc/nginx/sites-available/assessHourClient&nbsp; /etc/nginx/sites-enabled/assessHourClient</p>
 <p>
 	Place the below contents and save that file.</p>
 <pre class="prettyprint lang-js linenums">
@@ -506,11 +313,21 @@ server {
 <div>
 	&nbsp;</div>
 <div>
-	&nbsp;</div>
+	<ul>
+		<li>
+			Now it&#39;s time to import the database file to your Mysql database. You will find a database on DB folder.That&#39;s all for windows server.</li>
+	</ul>
+	<p>
+		&nbsp;</p>
+</div>
 <div>
 	Now let&#39;s end by executing below commands on linux terminal</div>
 <div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -&gt;&nbsp;sudo apt-get install -y libgdiplus</div>
+<div>
 	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -&gt;&nbsp;sudo systemctl enable AssessHour.Api</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -&gt;&nbsp;sudo service AssessHour.Api start</div>
 <div>
 	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -&gt; sudo service mysql restart</div>
 <div>
@@ -541,6 +358,11 @@ server {
 </ul>
 <p>
 	To find more detail you can browse this link (<strong>https://stripe.com/docs/testing</strong>)</p>
+</section>
+<section id="database_options">
+	<div class="page-header"><h3>Database Options</h3><hr class="notop"></div>
+<p>
+	This project currently configured with Mysql DB but you have more database options. You can use Sql Server, Postgresql, Oracle and Sqlite. If you want to use one of them, let me know i will help you for that with free of cost.</p>
 </section>
 <section id="features_super_admin">
 	<div class="page-header"><h3>Features(Super Admin) </h3><hr class="notop"></div>
@@ -720,6 +542,10 @@ server {
 	<img alt="" src="assets/images/image_17.png" style="width: 391px; height: 89px;"></p>
 <p>
 	<img alt="" src="assets/images/image_22.png" style="width: 815px; height: 414px;"></p>
+<p>
+	<a href="file:///media/disk1/Codecanyon/AssessHour/AssessHourLive/Screenshots/Screenshot6.png"><img alt="" src="file:///media/disk1/Codecanyon/AssessHour/AssessHourLive/Screenshots/Screenshot6.png"></a></p>
+<p>
+	<img alt="" src="/media/disk1/Codecanyon/AssessHour/AssessHourLive/Screenshots/Screenshot6.png"></p>
 </section>
 <section id="features_admin">
 	<div class="page-header"><h3>Features(Admin)</h3><hr class="notop"></div>
@@ -835,7 +661,7 @@ server {
 	Questions</h2>
 <p>
 	&nbsp;List of assessments in box shape with some other fields will be viewed here and you can add question by filling below fields</p>
-<ul>
+<ol>
 	<li>
 		&nbsp;&nbsp;&nbsp; Question ( No duplicate is accepted for a particular quiz)</li>
 	<li>
@@ -864,9 +690,9 @@ server {
 		&nbsp;&nbsp;&nbsp; Correct Answer</li>
 	<li>
 		&nbsp;&nbsp;&nbsp; Answer Explanation (Optional)</li>
-</ul>
+</ol>
 <p>
-	(8-12) applicable for MCQ questions only.</p>
+	(8-13) applicable for MCQ questions only.</p>
 <p>
 	<img alt="" src="assets/images/image_20.png" style="width: 815px; height: 414px;"></p>
 <p>
